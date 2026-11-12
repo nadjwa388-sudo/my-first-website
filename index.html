@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِزاج | قهوتك على كيفك</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+    :root {
+      --cream: #f7f1e8;
+      --brown: #3b241c;
+      --coffee: #8b5e3c;
+      --orange: #df8b52;
+      --muted: #786b61;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--brown);
+      font-family: 'Cairo', sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(59, 36, 28, 0.1);
+    }
+
+    nav,
+    .hero,
+    .section-heading,
+    .coffee-card,
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--coffee);
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--brown);
+      color: white;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .button:hover {
+      background: var(--coffee);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 580px;
+      gap: 60px;
+      padding: 70px 0;
+    }
+
+    .hero-copy {
+      flex: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #eadcc9;
+      color: var(--coffee);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 600px;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.2;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: var(--coffee);
+    }
+
+    .hero-copy p {
+      max-width: 490px;
+      margin: 22px 0 30px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-image {
+      position: relative;
+      flex: 0.9;
+      min-height: 430px;
+      overflow: hidden;
+      border-radius: 48% 48% 22px 22px;
+      background:
+        linear-gradient(0deg, rgba(40, 23, 14, 0.32), transparent 55%),
+        url("https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1000&q=85")
+        center/cover;
+      box-shadow: 0 24px 60px rgba(59, 36, 28, 0.16);
+    }
+
+    .image-note {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+    }
+
+    .image-note strong {
+      display: block;
+    }
+
+    .image-note span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .menu-section {
+      padding: 60px 0 90px;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+      gap: 20px;
+    }
+
+    .section-heading h2 {
+      font-size: 2rem;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .coffee-card {
+      align-items: flex-start;
+      gap: 15px;
+      padding: 22px;
+      border: 1px solid rgba(59, 36, 28, 0.1);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.58);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .coffee-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(59, 36, 28, 0.08);
+    }
+
+    .coffee-icon {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      place-items: center;
+      border-radius: 14px;
+      background: #eadcc9;
+      font-size: 1.45rem;
+    }
+
+    .coffee-info h3 {
+      font-size: 1.05rem;
+    }
+
+    .coffee-info p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .price {
+      color: var(--coffee);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid rgba(59, 36, 28, 0.1);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 34px;
+        padding: 52px 0;
+      }
+
+      .hero-image {
+        min-height: 350px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading,
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="القائمة الرئيسية">
+        <a class="logo" href="#">مِزاج<span>.</span></a>
+
+        <div class="nav-links">
+          <a href="#about">عن المقهى</a>
+          <a href="#menu">قائمتنا</a>
+          <a href="#contact">تواصل معنا</a>
+        </div>
+
+        <a class="button" href="#menu">اكتشف القائمة</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero" id="about">
+      <div class="hero-copy">
+        <span class="eyebrow">قهوتك، بطريقتنا ☕</span>
+        <h1>لحظتك الحلوة تبدأ من <span>أول رشفة.</span></h1>
+        <p>
+          قهوة مختصة، أجواء هادئة، وتفاصيل صغيرة تخلي يومك أجمل.
+          اختر مشروبك المفضل وخذ لك استراحة تستاهلها.
+        </p>
+        <a class="button" href="#menu">شوف قائمتنا ←</a>
+      </div>
+
+      <div class="hero-image" role="img" aria-label="فنجان قهوة في مقهى">
+        <div class="image-note">
+          <strong>محمصة بعناية، وتُحضّر بحب</strong>
+          <span>نكهة تليق بمزاجك كل يوم</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container menu-section" id="menu">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">اختياراتنا المفضلة</span>
+          <h2>شيء يضبط مزاجك</h2>
+        </div>
+        <p>حبوب مختارة، ومشروبات نجهزها لك بكل عناية.</p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="coffee-card">
+          <div class="coffee-icon" aria-hidden="true">☕</div>
+          <div class="coffee-info">
+            <h3>لاتيه كلاسيك</h3>
+            <p>إسبريسو ناعم مع حليب مخملي.</p>
+          </div>
+          <span class="price">١٨ ر.س</span>
+        </article>
+
+        <article class="coffee-card">
+          <div class="coffee-icon" aria-hidden="true">🧊</div>
+          <div class="coffee-info">
+            <h3>آيس أمريكانو</h3>
+            <p>قهوة باردة ومنعشة، بدون تعقيد.</p>
+          </div>
+          <span class="price">١٦ ر.س</span>
+        </article>
+
+        <article class="coffee-card">
+          <div class="coffee-icon" aria-hidden="true">🍯</div>
+          <div class="coffee-info">
+            <h3>سبانش لاتيه</h3>
+            <p>إسبريسو وحليب بلمسة حلوة.</p>
+          </div>
+          <span class="price">٢٠ ر.س</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container" id="contact">
+    <a class="logo" href="#">مِزاج<span>.</span></a>
+    <span>صُنع بحب لعشاق القهوة © 2026</span>
+    <a href="mailto:hello@mizaj.example">تواصل معنا</a>
+  </footer>
+</body>
+</html>
